@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block tital %}Home{% endblock tital %}
+
+{% block body %}
+    <h1 class="text-center">Employee List</h1>
+    <div class="container my-3">
+        <table class="table">
+            <thead class="thead-dark">
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Name</th>
+                <th scope="col">Employee Id</th>
+                <th scope="col">Email</th>
+                <th scope="col">Phone</th>
+                <th scope="col">Working</th>
+                <th scope="col">Department</th>
+                <th scope="col">Action</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for emps in emps %}
+            <tr>
+                <td>{{ forloop.counter }}</td>
+                <td>{{ emps.name }}</td>
+                <td>{{ emps.emp_id }}</td>
+                <td>{{ emps.email }}</td>
+                <td>{{ emps.phone }}</td>
+                <td>{{ emps.working }}</td>
+                <td>{{ emps.department }}</td>
+                <td>
+                    <a href="/delete_emp/{{ emps.id }}" type="button" class="btn btn-danger btn-sm">Delete</a>
+                    <a href="/update_emp/{{ emps.id }}" type="button" class="btn btn-primary btn-sm">Update</a>
+                </td>
+            </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}
